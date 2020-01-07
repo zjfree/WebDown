@@ -97,6 +97,13 @@ namespace WebDown
                 // curl "https://www.wjceo.com/examples/demo/infinitown/assets/scenes/data/main.bin" -H 
                 str = str.Substring(6, str.IndexOf('"', 6) - 6);
 
+                if (!str.StartsWith("http"))
+                {
+                    errorCount++;
+                    label2.Text = successCount + "/" + errorCount + "/" + strList.Length;
+                    continue;
+                }
+
                 string s = str.Replace("http://", "");
                 s = s.Replace("https://", "");
                 string[] arr = s.Split(new char[] { '/' });
